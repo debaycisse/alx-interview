@@ -45,7 +45,7 @@ def minOperations(n):
         """Simulates Paste operation"""
         op_count[0] += 1
 
-    if ((n <= 0) or (not isinstance(n, int))):
+    if ((not isinstance(n, int)) or (n <= 0) or (n == 1)):
         return 0
     divisor_value = find_div(n)
     division_value = n // divisor_value
