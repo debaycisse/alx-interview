@@ -15,23 +15,47 @@ def minOperations(n: int) -> int:
     Returns:
         the number of fewest operations needed to place
     """
-    num = n
-    data = ['H']
-    copied = ''
-    op_count = 0
-    divisor = 0
-    try:
-        while (len(data[0]) < num):
-            divisor = len(data[0])
-            if (num % divisor == 0):
-                op_count += 2
-                copied = data[0]
-                data[0] += copied
-            else:
-                op_count += 1
-                data[0] += copied
-    except Exception:
-        pass
-    if (len(data[0]) != n):
+    op_count = [0]
+    content = ['H']
+
+    def find_div(num: int) -> int:
+        """
+        Finds the highest divisor for the given number
+
+        Args:
+            num - the number whose highest divisor is to be obtained
+
+        Returns:
+            the (highest) number among the possible divisors
+        """
+        i = 2
+        val = num
+        data = [0]
+        while i <= val:
+            if (val % i == 0):
+                data[0] = i
+                val //= i
+            i += 1
+        return data[-1]
+
+    def copy_all_op() -> None:
+        """Simulates Copy All operation"""
+        op_count[0] += 1
+
+    def paste_op() -> None:
+        """Simulates Paste operation"""
+        op_count[0] += 1
+        content[0] += 'H'
+
+    if ((not isinstance(n, int)) or (n <= 0) or (n == 1)):
         return 0
-    return op_count
+    divisor_value = find_div(n)
+    division_value = n // divisor_value
+    copy_all_op()
+    for _ in range(divisor_value - 1):
+        paste_op()
+    if (len(content[0]) != n):
+        copy_all_op()
+        for _ in range(division_value - 1):
+            paste_op()
+    return op_count[-1]
