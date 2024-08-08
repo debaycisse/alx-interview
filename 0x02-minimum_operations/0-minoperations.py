@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """This module houses the definition of functions that are used to
 calculates the fewest number of operations needed to take place
 for the H to copied in a given number times"""
