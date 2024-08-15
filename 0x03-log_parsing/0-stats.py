@@ -56,10 +56,12 @@ for line in sys.stdin:
 
     match = re.search(_ptn, line)
     if (match.group() == line):
+        line_counter += 1
         continue
-    data = match.group().split(' ')
-    status_code = data[-2]
-    f_size = data[-1]
+    else:
+        data = match.group().split(' ')
+        status_code = data[-2]
+        f_size = data[-1]
 
     if not stat.get(status_code):
         stat[status_code] = 1
