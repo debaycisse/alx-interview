@@ -55,7 +55,7 @@ for line in sys.stdin:
         display_statistics(file_size, stat)
 
     match = re.search(_ptn, line)
-    if (len(match.group()) < 50):
+    if (match.group() == line):
         continue
     data = match.group().split(' ')
     status_code = data[-2]
