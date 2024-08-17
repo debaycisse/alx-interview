@@ -11,7 +11,7 @@ import time
 from functools import wraps
 
 
-p1 =  r'\d+.\d+.\d+.\d+ - '
+p1 = r'\d+.\d+.\d+.\d+ - '
 p2 = r'\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\] '
 p3 = r'"[A-Z]+ /[a-z]+/\d+ HTTP/\d.\d" \d{3} \d+'
 _ptn = p1 + p2 + p3
@@ -80,7 +80,6 @@ def interrupt_handler(signum, frame):
     display_statistics()
     time.sleep(0.1)
     sys.exit(0)
-
 
 
 signal.signal(signal.SIGINT, interrupt_handler)
