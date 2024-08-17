@@ -114,3 +114,5 @@ for line in sys.stdin:
 
 if track_d == 0:
     display_statistics()
+else:
+    display_statistics()
