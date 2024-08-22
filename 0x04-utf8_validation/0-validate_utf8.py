@@ -19,7 +19,7 @@ def validUTF8(data: Union[List[int], int]) -> bool:
     """
     if (not isinstance(data, list)) and (not isinstance(data, int)):
         return
-    is_valid: bytes = 0
+    is_valid: bool
     if isinstance(data, list):
         for num in data:
             is_valid = bytes([num]).isascii()
