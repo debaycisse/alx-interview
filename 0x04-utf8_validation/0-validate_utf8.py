@@ -20,12 +20,10 @@ def validUTF8(data):
         return
     if(isinstance(data, list)):
         for num in data:
-            is_valid = bytes([num]).isascii()
-            if not is_valid:
+            if num > 127 or num < 0:
                 return False
         return True
     if(isinstance(data, int)):
-        is_valid = bytes([data]).isascii()
-        if not is_valid:
+        if data > 127 or data < 0:
             return False
-    return True
+        return True
