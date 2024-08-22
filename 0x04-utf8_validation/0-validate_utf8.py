@@ -16,14 +16,11 @@ def validUTF8(data):
     Returns:
         True, if it is a valid UTF8 character set, otherwise false
     """
-    if(not isinstance(data, list)) and (not isinstance(data, int)):
-        return
-    if(isinstance(data, list)):
-        for num in data:
-            if num > 127 or num < 0:
-                return False
+    if not isinstance(data, list):
+        return False
+    try:
+        converted_data = bytes([num & 255 for num in data])
+        converted_data.decode('UTF-8')
         return True
-    if(isinstance(data, int)):
-        if data > 127 or data < 0:
-            return False
-        return True
+    except UnicodeDecodeError:
+        return False
